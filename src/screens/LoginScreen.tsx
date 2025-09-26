@@ -69,31 +69,47 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
         Alert.alert('登录失败', error.message);
       } else if (user) {
         // 检查用户是否已有家庭组
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
+        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        if (currentUser) {
           const { data: memberData, error: memberError } = await supabase
             .from('family_members')
             .select('id')
-            .eq('user_id', user.id)
+            .eq('user_id', currentUser.id)
             .maybeSingle(); // ✅ 修复：用户可能没有家庭
           
-          if (memberError) {
-            if (memberError.code === 'PGRST116') {
-              // 用户没有家庭组，跳转到家庭组创建页面
-              navigation.replace('FamilySetup');
-            } else {
-              console.error('获取家庭成员信息失败:', memberError);
-              navigation.replace('Main');
-            }
+          if (memberError && memberError.code === 'PGRST116') {
+            // 用户没有家庭组，跳转到家庭组创建页面
+            navigation.replace('FamilySetup');
           } else if (!memberData) {
             // 用户没有家庭组，跳转到家庭组创建页面
             navigation.replace('FamilySetup');
           } else {
             // 已有家庭组，进入主界面
-            navigation.replace('Main');
+            // 检查用户是否已有家庭组
+        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        if (currentUser) {
+          const { data: memberData, error: memberError } = await supabase
+            .from('family_members')
+            .select('id')
+            .eq('user_id', currentUser.id)
+            .maybeSingle(); // ✅ 修复：用户可能没有家庭
+          
+          if (memberError && memberError.code === 'PGRST116') {
+            // 用户没有家庭组，跳转到家庭组创建页面
+            navigation.replace('FamilySetup');
+          } else if (!memberData) {
+            // 用户没有家庭组，跳转到家庭组创建页面
+            navigation.replace('FamilySetup');
+          } else {
+            // 已有家庭组，进入主界面
+            navigation.replace('MainTabs');
           }
         } else {
-          navigation.replace('Main');
+          navigation.replace('MainTabs');
+        }
+          }
+        } else {
+          navigation.replace('MainTabs');
         }
       }
     } catch (error) {
@@ -136,7 +152,28 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
           await AsyncStorage.setItem('autoLogin', 'false');
         }
         
-        navigation.replace('Main');
+        // 检查用户是否已有家庭组
+        const { data: { user: currentUser } } = await supabase.auth.getUser();
+        if (currentUser) {
+          const { data: memberData, error: memberError } = await supabase
+            .from('family_members')
+            .select('id')
+            .eq('user_id', currentUser.id)
+            .maybeSingle(); // ✅ 修复：用户可能没有家庭
+          
+          if (memberError && memberError.code === 'PGRST116') {
+            // 用户没有家庭组，跳转到家庭组创建页面
+            navigation.replace('FamilySetup');
+          } else if (!memberData) {
+            // 用户没有家庭组，跳转到家庭组创建页面
+            navigation.replace('FamilySetup');
+          } else {
+            // 已有家庭组，进入主界面
+            navigation.replace('MainTabs');
+          }
+        } else {
+          navigation.replace('MainTabs');
+        }
       }
     } catch (error) {
       setError('发生未知错误');

@@ -39,7 +39,7 @@ const FamilySetupScreen: React.FC<FamilySetupScreenProps> = ({ navigation }) => 
       const hasFamily = await familyService.checkUserHasFamily();
       if (hasFamily) {
         // 用户已有家庭组，跳转到主界面
-        navigation.replace('Main');
+        navigation.replace('MainTabs');
       }
     } catch (error) {
       console.error('检查用户家庭状态失败:', error);
@@ -64,7 +64,7 @@ const FamilySetupScreen: React.FC<FamilySetupScreenProps> = ({ navigation }) => 
         [
           {
             text: '确定',
-            onPress: () => navigation.replace('Main'),
+            onPress: () => navigation.replace('MainTabs'),
           },
         ]
       );
@@ -91,7 +91,7 @@ const FamilySetupScreen: React.FC<FamilySetupScreenProps> = ({ navigation }) => 
         [
           {
             text: '确定',
-            onPress: () => navigation.replace('Main'),
+            onPress: () => navigation.replace('MainTabs'),
           },
         ]
       );

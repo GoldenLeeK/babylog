@@ -1045,8 +1045,9 @@ const SettingsScreen = () => {
       visible={editModalVisible}
       animationType="slide"
       presentationStyle="pageSheet"
+      onRequestClose={() => setEditModalVisible(false)}
     >
-      <SafeAreaView style={modalStyles.modalContainer}>
+      <SafeAreaView style={modalStyles.modalContainer} edges={['top', 'left', 'right', 'bottom']}>
         <View style={modalStyles.modalHeader}>
           <TouchableOpacity onPress={() => setEditModalVisible(false)}>
             <Text style={modalStyles.cancelButton}>取消</Text>
@@ -1663,15 +1664,20 @@ const modalStyles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     backgroundColor: '#f5f5f5',
+    paddingBottom: 40, // 增加全面屏底部间距，确保保存按钮可点击
   },
   modalHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
+    paddingTop: 16,
+    paddingHorizontal: 16,
+    paddingBottom: 16,
     backgroundColor: 'white',
     borderBottomWidth: 1,
     borderBottomColor: '#e0e0e0',
+    // 为全面屏顶部添加额外间距
+    marginTop: 20,
   },
   modalTitle: {
     fontSize: 18,

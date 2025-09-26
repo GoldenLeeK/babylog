@@ -92,7 +92,7 @@ export const RegisterScreen = ({ navigation }: Props) => {
       >
         <ScrollView contentContainerStyle={styles.scrollView}>
           <View style={styles.header}>
-            <Text style={styles.title}>宝宝喂养追踪</Text>
+            <Text style={styles.title}>遥遥成长日记</Text>
             <Text style={styles.subtitle}>创建新账户</Text>
           </View>
 

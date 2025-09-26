@@ -32,6 +32,10 @@ const TabNavigator = () => {
         headerShown: false,
         tabBarActiveTintColor: '#9C27B0',
         tabBarInactiveTintColor: '#999',
+        tabBarStyle: {
+          paddingBottom: 5,
+          height: 60,
+        },
       }}
     >
       <Tab.Screen 
@@ -97,7 +101,7 @@ const AppNavigator = () => {
         {user ? (
           // 用户已登录
           <>
-            <Stack.Screen name="Main" component={TabNavigator} />
+            <Stack.Screen name="MainTabs" component={TabNavigator} />
             <Stack.Screen name="Timer" component={TimerScreen} />
             <Stack.Screen name="BottleFeeding" component={BottleFeedingScreen} />
             <Stack.Screen name="Diaper" component={DiaperScreen} />
