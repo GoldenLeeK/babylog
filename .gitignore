@@ -31,7 +31,28 @@ yarn-error.*
 *.pem
 
 # local env files
+.env
 .env*.local
+
+# Sensitive configuration files
+app.config.js
+app.config.ts
+
+# Build artifacts
+*.apk
+*.ipa
+*.aab
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+.DS_Store
 
 # typescript
 *.tsbuildinfo
