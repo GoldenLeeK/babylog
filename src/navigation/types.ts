@@ -1,0 +1,21 @@
+export type RootStackParamList = {
+  Login: undefined;
+  Register: undefined;
+  ForgotPassword: undefined;
+  FamilySetup: undefined;
+  MainTabs: undefined;
+  Home: undefined;
+  Feeding: undefined;
+  Diaper: undefined;
+  Sleep: undefined;
+  Timer: undefined;
+  Statistics: undefined;
+  Profile: undefined;
+  History: undefined;
+  Analytics: undefined;
+  Export: undefined;
+  BottleFeeding: undefined;
+  Main: undefined;
+  BabyManagement: undefined;
+  Settings: undefined;
+};
