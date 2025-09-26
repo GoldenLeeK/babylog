@@ -60,3 +60,6 @@ ehthumbs.db
 # generated native folders
 /ios
 /android
+
+# Wrangler/Cloudflare files
+.wrangler/
